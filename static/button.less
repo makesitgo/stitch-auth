@@ -1,0 +1,29 @@
+button {
+    display: inline-block;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    text-decoration: none;
+    background: @gray5;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover {
+    background: darken(@gray5, 5%);
+}
+
+button:focus {
+    outline: 1px solid fade(@gray1, 50%);
+    outline-offset: -1px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
