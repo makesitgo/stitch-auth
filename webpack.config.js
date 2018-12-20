@@ -9,7 +9,7 @@ module.exports = ((env = {}) => {
     mode: 'development',
     entry: [
       'react-hot-loader/patch',
-      'webpack-dev-server/client?http://0.0.0.0:8080',
+      'webpack-dev-server/client?http://0.0.0.0:8000',
       'webpack/hot/only-dev-server',
       './src/index.tsx',
     ],
@@ -58,7 +58,7 @@ module.exports = ((env = {}) => {
     devtool: 'inline-source-map',
     devServer: {
       host: '0.0.0.0',
-      port: 8080,
+      port: 8000,
       historyApiFallback: true,
       hot: true,
       progress: true,

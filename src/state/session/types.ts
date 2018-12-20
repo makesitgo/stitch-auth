@@ -1,4 +1,4 @@
-import { StitchUser, StitchServiceErrorCode } from 'mongodb-stitch-browser-sdk';
+import { StitchUser, StitchServiceError } from 'mongodb-stitch-browser-sdk';
 
 export interface EmailPassword {
   email: string;
@@ -14,15 +14,9 @@ export interface TokenDataWithPassword extends TokenData {
   password: string;
 }
 
-export interface SessionError {
-  name: string;
-  message: string;
-  code?: StitchServiceErrorCode;
-}
-
 export interface SessionState {
   user?: StitchUser;
-  error?: SessionError;
+  error?: StitchServiceError;
 }
 
 export const initialSessionState: SessionState = {};

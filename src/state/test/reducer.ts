@@ -1,8 +1,8 @@
 import { buildReducer, newAsyncActionHandler } from '../../utils';
-import { initialTestState, find } from '.';
+import { initialTestState, testFind } from '.';
 
 export default buildReducer(initialTestState, [
-  newAsyncActionHandler(find.async, {
+  newAsyncActionHandler(testFind.async, {
     onRequest: state => {
       state.docs = [];
       delete state.error;

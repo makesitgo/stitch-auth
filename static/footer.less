@@ -5,4 +5,43 @@
   justify-content: space-between;
   align-items: center;
   flex: 0 50px;
+
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  -o-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+
+  &-alert {
+    display: flex;
+    align-items: center;
+
+    &-timestamp {
+      margin-right: 20px;
+    }
+  }
+
+  &-success {
+    .footer-fade(@success);
+  }
+
+  &-info {
+    .footer-fade(@info);
+  }
+
+  &-warn {
+    .footer-fade(@warning);
+  }
+
+  &-error {
+    .footer-fade(@danger);
+  }
+
+  &-debug {
+    .footer-fade(@gray4);
+  }
+}
+
+.footer-fade(@color) {
+  background-color: fade(@color, 20%);
+  color: darken(@color, 5%);
 }

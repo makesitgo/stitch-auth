@@ -1,6 +1,6 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { ErrorBoundary, Header, Content, Footer } from '../view/components';
+import { ErrorBoundary, App } from '../view/components';
 
 export default class Router extends React.Component<any> {
   render() {
@@ -8,11 +8,7 @@ export default class Router extends React.Component<any> {
     return (
       <ConnectedRouter history={history}>
         <ErrorBoundary>
-          <div className="app">
-            <Header />
-            <Content />
-            <Footer />
-          </div>
+          <App />
         </ErrorBoundary>
       </ConnectedRouter>
     );

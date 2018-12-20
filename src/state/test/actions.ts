@@ -6,7 +6,7 @@ import { AppState, AsyncContext, TestDocument } from '../';
 const create = actionCreatorFactory('test');
 const createAsync = asyncFactory<AppState, AsyncContext>(create);
 
-export const find = createAsync<{}, TestDocument[]>(
+export const testFind = createAsync<{}, TestDocument[]>(
   'find',
   (_params, _dispatch, _getState, { stitch }) =>
     stitch

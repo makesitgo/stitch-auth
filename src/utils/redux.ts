@@ -2,7 +2,7 @@ import produce, { Draft } from 'immer';
 import { ActionCreator, AsyncActionCreators, Failure, Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
-type StateModifier<STATE, PAYLOAD> = (state: Draft<STATE>, payload: PAYLOAD) => void | STATE;
+type StateModifier<STATE, PAYLOAD> = (state: Draft<STATE>, payload: PAYLOAD) => void;
 
 type ReducerCase<STATE, PAYLOAD, PARAMS = any, ERROR = Error> =
   | ActionHandler<STATE, PAYLOAD>

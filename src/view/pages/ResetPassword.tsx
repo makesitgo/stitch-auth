@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
 import queryString from 'query-string';
+import { urls } from '../../utils';
 import { AppState, TokenDataWithPassword, resetPassword } from '../../state';
 import { ResetPasswordForm } from '../components';
 
@@ -11,29 +12,36 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  resetPassword: (data: TokenDataWithPassword) => Promise<void>
-  gotoLogin: () => void;
+  resetPassword: (data: TokenDataWithPassword) => Promise<void>;
+  gotoHome: () => void;
 }
 
 type Props = StateProps & DispatchProps;
 
-class ResetPassword extends React.Component<Props> {
-
-  handleResetPassword = (password: string) => {
-    const { search, resetPassword } = this.props;
-    const values = queryString.parse(search);
-
-    const token = values.token as string;
-    const tokenId = values.tokenId as string;
-
-    return resetPassword({ token, tokenId, password });
+const paramIsString = (param: string | string[] | undefined) => {
+  if (param) {
+    if (typeof param === 'string') {
+      return param;
+    }
   }
+  throw new Error('provided a non-string input but expected one');
+};
+
+class ResetPassword extends React.Component<Props> {
+  resetPassword = (password: string) => {
+    const { search, resetPassword } = this.props;
+    const { token, tokenId } = queryString.parse(search);
+    return resetPassword({ token: paramIsString(token), tokenId: paramIsString(tokenId), password });
+  };
 
   render() {
-    return <div>
-      <h1>reset password</h1>
-      <ResetPasswordForm handleSubmit={this.handleResetPassword} />
-    </div>;
+    const { gotoHome } = this.props;
+    return (
+      <div className="reset-password">
+        <h1>reset password</h1>
+        <ResetPasswordForm handleSubmit={this.resetPassword} gotoHome={gotoHome} />
+      </div>
+    );
   }
 }
 
@@ -43,7 +51,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   resetPassword: (data: TokenDataWithPassword) => dispatch<any>(resetPassword.action(data)),
-  gotoLogin: () => dispatch(push('/login')),
+  gotoHome: () => dispatch(push(urls.home())),
 });
 
 export default connect(

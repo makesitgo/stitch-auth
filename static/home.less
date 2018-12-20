@@ -1,3 +1,21 @@
 .home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 62vh;
 
+  &-controls {
+    border: 2px solid @gray5;
+    min-width: 600px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    pre {
+      min-height: 120px;
+    }
+  }
 }

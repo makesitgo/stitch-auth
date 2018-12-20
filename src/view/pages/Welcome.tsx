@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
+import { urls } from '../../utils';
 
 interface DispatchProps {
   gotoHome: () => void;
@@ -22,7 +23,7 @@ class Welcome extends React.Component<Props> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  gotoHome: () => dispatch(push('/home')),
+  gotoHome: () => dispatch(push(urls.home())),
 });
 
 export default connect(
